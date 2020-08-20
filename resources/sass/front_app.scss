@@ -1,0 +1,25 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+$fa-font-path: "../webfonts";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+.header-section .main-menu ul li .router-link-exact-active,
+.header-section .main-menu ul li a:hover .router-link-exact-active {
+    color: #fb524f;
+}
+
+.p-food-item .p-food-inner .p-food-content .p-food-author img {
+    width: 67px;
+    height: 67px;
+}
+#content {
+    margin-top: 0px !important;
+}
+.testimonial .section-wrapper .carousel-indicators .item.active img {
+    width: 55% !important;
+}
