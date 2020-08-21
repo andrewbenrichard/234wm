@@ -13,27 +13,32 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-   public function login(Request $request)
+   public function login()
    {
-       if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+
+    
+    $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
+
+       if (Auth::attempt(['email' => $email, 'password' => $password]))
        {
            $credentials = request(['email', 'password']);
            
            if (! $token = auth()->attempt($credentials)) {
-            $email_checker = User::where('email','=',$request->email)->first();
+            $email_checker = User::where('email','=',$email)->first();
             if (!$email_checker) {
-                $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
+                $set['234WM_API_V1']=array('msg' =>'Account not found','success'=>'0');
             }
             $hashedPassword = $email_checker->password;
 
 
             if (!Hash::check($password, $hashedPassword)) {
-                $set['234WM_API_V1'][]=array('msg' =>'wrong password','success'=>'0');
+                $set['234WM_API_V1']=array('msg' =>'wrong password','success'=>'0');
             }
             }
             
             if($token){
-                $user = User::where('email','=',$request->email)->first();
+                $user = User::where('email','=',$email)->first();
                 $plan = Plan::where('id','=', $user->plan_id)->first();
 
                 if ($plan) {
@@ -42,27 +47,33 @@ class LoginController extends Controller
                     $sub_plan = null;
                 }
 
+<<<<<<< HEAD
                 $response[]= array(
                 'token' => $token,
+=======
+                $response= array(
+                'auth_token' => $token,
+>>>>>>> c5b3e99114346b1da09d5d0e1fd962b2daffc6ba
                 'fullname' => $user->full_name,
                 'email' => $user->email,
                 'number' => $user->number,
                 'user_plan' => $sub_plan,
                 'plan_pickups' => $user->plan_pickups,
                 'plan_status' => $user->plan_status,
+                'success' => '1'
              );
              $set['234WM_API_V1']  = $response;
         }
         //  return response()->json(compact('token'));
     }else {
-        $email_checker = User::where('email','=',$request->email)->first();
+        $email_checker = User::where('email','=',$email)->first();
         if (!$email_checker) {
             $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
         }
         $hashedPassword = $email_checker->password;
 
 
-        if (!Hash::check($request->password, $hashedPassword)) {
+        if (!Hash::check($password, $hashedPassword)) {
             $set['234WM_API_V1']=array('msg' =>'wrong password','success'=>'0');
         }
     }

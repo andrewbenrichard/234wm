@@ -19,10 +19,15 @@
 
 
 Route::group(['prefix'=> 'auth','namespace' => 'API'], function(){
+<<<<<<< HEAD
         Route::post('signin', 'Auth\LoginController@Login');
         // Route::get('/login/{email?}/{password?}', 'Auth\LoginController@appLogin');
 
         Route::post('join', 'Auth\RegisterController@RegisterCustomer');
+=======
+        Route::get('signin/{email?}/{password?}', 'Auth\LoginController@Login');
+        Route::get('join/{full_name?}/{email?}/{password?}/{number?}', 'Auth\RegisterController@RegisterCustomer');
+>>>>>>> c5b3e99114346b1da09d5d0e1fd962b2daffc6ba
         Route::post('signout', 'Auth\LogoutController');
         Route::get('me', 'Auth\MeController');
 });

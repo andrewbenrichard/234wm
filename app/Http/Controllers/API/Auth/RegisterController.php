@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\APi\Auth;
 
 use App\User;
-use App\Shop;
+use App\Plan;
 use Session;
 use Validator;
 use Illuminate\Support\Facades\Auth;
@@ -13,15 +13,14 @@ use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
-   public function RegisterCustomer(Request $request)
+   public function RegisterCustomer()
    {
-  
 
     
-        $full_name = $request->full_name;
-        $number = $request->number;
-        $email = $request->email;
-        $password = $request->password;
+        $full_name = filter_input(INPUT_GET, 'full_name', FILTER_SANITIZE_STRING);
+        $number = filter_input(INPUT_GET, 'number', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
         
       if (!$full_name == null OR !$number == null OR !$email == null OR !$password == null) {
         $userauth = User::where('email', '=', $email)->orWhere('number', '=', $number)->first();
@@ -42,12 +41,12 @@ class RegisterController extends Controller
         ]);
       
             
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+        if (Auth::attempt(['email' => $email, 'password' => $password]))
         {
             $credentials = request(['email', 'password']);
             
             if (! $token = auth()->attempt($credentials)) {
-             $email_checker = User::where('email','=',$request->email)->first();
+             $email_checker = User::where('email','=',$email)->first();
              if (!$email_checker) {
                  $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
              }
@@ -60,29 +59,25 @@ class RegisterController extends Controller
              }
              
              if($token){
-                 $user = User::where('email','=',$request->email)->first();
+                 $user = User::where('email','=',$email)->first();
+                 $plan = Plan::where('id','=', $user->plan_id)->first();
+
+                 if ($plan) {
+                     $sub_plan = $plan->plan_name;
+                 }else{
+                     $sub_plan = null;
+                 }
                  $response= array(
-                 'token' => $token,
+                 'auth_token' => $token,
                  'fullname' => $user->full_name,
                  'email' => $user->email,
                  'number' => $user->number,
+                 'success' => "1"
               );
               $set['234WM_API_V1']  = $response;
          }
-         //  return response()->json(compact('token'));
      }
 
-        //      Auth::login($user);
-        //     $user = auth()->user();
-    
-        //     $set['234WM_API_V1'][]=array(
-        //       'user_id' => $user->id,
-        //       'full_name' => $user->full_name,
-        //   'email' => $user->email,
-        //   'number' => $user->number,
-        //   'is_shop_active' => 0, //0 for not a shop, 1 for is a shop but not active, 2 for is a shop and active,
-        //   'is_reseller' => 0,
-        //   'success' => '1');
             }
 
       
