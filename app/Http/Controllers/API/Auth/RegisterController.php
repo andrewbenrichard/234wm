@@ -72,7 +72,7 @@ class RegisterController extends Controller
                  'fullname' => $user->full_name,
                  'email' => $user->email,
                  'number' => $user->number,
-                 'success' => 1
+                 'success' => "1"
               );
               $set['234WM_API_V1']  = $response;
          }
