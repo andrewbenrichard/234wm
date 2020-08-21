@@ -67,7 +67,7 @@ class RegisterController extends Controller
                  }else{
                      $sub_plan = null;
                  }
-                 $response= array(
+                 $response[]= array(
                  'auth_token' => $token,
                  'fullname' => $user->full_name,
                  'email' => $user->email,
