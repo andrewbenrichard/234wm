@@ -42,7 +42,7 @@ class LoginController extends Controller
                     $sub_plan = null;
                 }
 
-                $response= array(
+                $response[]= array(
                 'token' => $token,
                 'fullname' => $user->full_name,
                 'email' => $user->email,
