@@ -13,14 +13,19 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-   public function login(Request $request)
+   public function login()
    {
-       if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
+
+    
+    $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
+
+       if (Auth::attempt(['email' => $email, 'password' => $password]))
        {
            $credentials = request(['email', 'password']);
            
            if (! $token = auth()->attempt($credentials)) {
-            $email_checker = User::where('email','=',$request->email)->first();
+            $email_checker = User::where('email','=',$email)->first();
             if (!$email_checker) {
                 $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
             }
@@ -33,7 +38,7 @@ class LoginController extends Controller
             }
             
             if($token){
-                $user = User::where('email','=',$request->email)->first();
+                $user = User::where('email','=',$email)->first();
                 $plan = Plan::where('id','=', $user->plan_id)->first();
 
                 if ($plan) {
@@ -43,7 +48,7 @@ class LoginController extends Controller
                 }
 
                 $response= array(
-                'token' => $token,
+                'auth_token' => $token,
                 'fullname' => $user->full_name,
                 'email' => $user->email,
                 'number' => $user->number,
@@ -55,14 +60,14 @@ class LoginController extends Controller
         }
         //  return response()->json(compact('token'));
     }else {
-        $email_checker = User::where('email','=',$request->email)->first();
+        $email_checker = User::where('email','=',$email)->first();
         if (!$email_checker) {
             $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
         }
         $hashedPassword = $email_checker->password;
 
 
-        if (!Hash::check($request->password, $hashedPassword)) {
+        if (!Hash::check($password, $hashedPassword)) {
             $set['234WM_API_V1']=array('msg' =>'wrong password','success'=>'0');
         }
     }

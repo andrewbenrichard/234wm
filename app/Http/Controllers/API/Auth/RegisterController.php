@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\APi\Auth;
 
 use App\User;
-use App\Shop;
+use App\Plan;
 use Session;
 use Validator;
 use Illuminate\Support\Facades\Auth;
@@ -13,15 +13,14 @@ use App\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
-   public function RegisterCustomer(Request $request)
+   public function RegisterCustomer()
    {
-  
 
     
-        $full_name = $request->full_name;
-        $number = $request->number;
-        $email = $request->email;
-        $password = $request->password;
+        $full_name = filter_input(INPUT_GET, 'full_name', FILTER_SANITIZE_STRING);
+        $number = filter_input(INPUT_GET, 'number', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING);
         
       if (!$full_name == null OR !$number == null OR !$email == null OR !$password == null) {
         $userauth = User::where('email', '=', $email)->orWhere('number', '=', $number)->first();
@@ -61,8 +60,15 @@ class RegisterController extends Controller
              
              if($token){
                  $user = User::where('email','=',$request->email)->first();
+                 $plan = Plan::where('id','=', $user->plan_id)->first();
+
+                 if ($plan) {
+                     $sub_plan = $plan->plan_name;
+                 }else{
+                     $sub_plan = null;
+                 }
                  $response= array(
-                 'token' => $token,
+                 'auth_token' => $token,
                  'fullname' => $user->full_name,
                  'email' => $user->email,
                  'number' => $user->number,
