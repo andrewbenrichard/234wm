@@ -47,14 +47,10 @@ class LoginController extends Controller
                     $sub_plan = null;
                 }
 
-<<<<<<< HEAD
+               
                 $response[]= array(
-                'token' => $token,
-=======
-                $response= array(
                 'auth_token' => $token,
->>>>>>> c5b3e99114346b1da09d5d0e1fd962b2daffc6ba
-                'fullname' => $user->full_name,
+             'fullname' => $user->full_name,
                 'email' => $user->email,
                 'number' => $user->number,
                 'user_plan' => $sub_plan,
