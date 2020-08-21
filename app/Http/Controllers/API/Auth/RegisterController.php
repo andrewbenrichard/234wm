@@ -72,23 +72,12 @@ class RegisterController extends Controller
                  'fullname' => $user->full_name,
                  'email' => $user->email,
                  'number' => $user->number,
+                 'success' => 1
               );
               $set['234WM_API_V1']  = $response;
          }
-         //  return response()->json(compact('token'));
      }
 
-        //      Auth::login($user);
-        //     $user = auth()->user();
-    
-        //     $set['234WM_API_V1'][]=array(
-        //       'user_id' => $user->id,
-        //       'full_name' => $user->full_name,
-        //   'email' => $user->email,
-        //   'number' => $user->number,
-        //   'is_shop_active' => 0, //0 for not a shop, 1 for is a shop but not active, 2 for is a shop and active,
-        //   'is_reseller' => 0,
-        //   'success' => '1');
             }
 
       
