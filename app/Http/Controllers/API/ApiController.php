@@ -97,24 +97,23 @@ class ApiController extends Controller
     {
         $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
         
-        $user = User::where('id', '=', $user_id)->get();
-        echo $user->email;
-    //     $plan = Plan::where('id','=', $user->plan_id)->first();
+        $user = User::where('id', '=', $user_id)->first();
+        $plan = Plan::where('id','=', $user->plan_id)->first();
 
-    //     if ($plan) {
-    //         $sub_plan = $plan->plan_name;
-    //     }else{
-    //         $sub_plan = null;
-    //     }
+        if ($plan) {
+            $sub_plan = $plan->plan_name;
+        }else{
+            $sub_plan = null;
+        }
 
        
-    //     $response[]= array(
-    //     'user_plan' => $sub_plan,
-    //     'plan_pickups' => $user->plan_pickups,
-    //     'plan_status' => $user->plan_status,
-    //     'success' => '1'
-    //  );
-    //  $set['234WM_API_V1']  = $user;
+        $response[]= array(
+        'user_plan' => $sub_plan,
+        'plan_pickups' => $user->plan_pickups,
+        'plan_status' => $user->plan_status,
+        'success' => '1'
+     );
+     $set['234WM_API_V1']  = $response;
        
       
      header( 'Content-Type: application/json; charset=utf-8' );
