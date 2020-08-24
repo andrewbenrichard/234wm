@@ -84,7 +84,7 @@ Route::group(['prefix'=> 'sc_front','namespace' => 'API'], function(){
           /* Home APi */
           Route::get('home_feeds', 'ApiController@AppHomeFeed');
           Route::get('schedules_feeds', 'ApiController@getSchedules');
-          Route::get('check/subscription', 'ApiController@checkSubscription');
+          Route::get('check/subscription/{user_id?}', 'ApiController@checkSubscription');
           Route::post('schedule/pickup', 'ApiController@StoreSchedule');
           Route::post('schedule/subscription', 'ApiController@StoreSubscriptionSchedule');
 
