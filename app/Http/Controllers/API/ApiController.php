@@ -107,12 +107,12 @@ class ApiController extends Controller
         }
 
        
-    //     $response[]= array(
-    //     'user_plan' => $sub_plan,
-    //     'plan_pickups' => $user->plan_pickups,
-    //     'plan_status' => $user->plan_status,
-    //     'success' => '1'
-    //  );
+        $response[]= array(
+        'user_plan' => $sub_plan,
+        'plan_pickups' => $user->plan_pickups,
+        'plan_status' => $user->plan_status,
+        'success' => '1'
+     );
      $set['234WM_API_V1']  = $user;
        
       
