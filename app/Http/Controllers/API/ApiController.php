@@ -97,7 +97,7 @@ class ApiController extends Controller
     {
         $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
         
-        $user = User::where('user_id', '=', $user_id)->get();
+        $user = User::where('id', '=', $user_id)->get();
         $plan = Plan::where('id','=', $user->plan_id)->first();
 
         if ($plan) {
