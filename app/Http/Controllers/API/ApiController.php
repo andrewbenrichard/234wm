@@ -116,8 +116,7 @@ class ApiController extends Controller
      $set['234WM_API_V1']  = $user;
        
       
-     
-        $set['234WM_API_V1']  = $row;
+     header( 'Content-Type: application/json; charset=utf-8' )
         echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         die();
     }
