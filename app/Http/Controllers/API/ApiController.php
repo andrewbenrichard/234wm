@@ -68,6 +68,59 @@ class ApiController extends Controller
         echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         die();
     }
+    public function getSchedules()
+    {
+
+       $user_id = 2;
+        /* media url header ends here */
+        
+        $schedules = Schedule::where('user_id', '=', $user_id)->get();
+        if (!$schedules->isEmpty()) {
+            
+            $row['schedules']=$schedules;
+            
+
+       } else {
+        $row['schedules']= array(
+            'msg' => 'no schedules',
+            'success' => 0, 
+        );
+       }
+       
+      
+     
+        $set['234WM_API_V1']  = $row;
+        echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+        die();
+    }
+    public function checkSubscription()
+    {
+        $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
+        
+        $user = User::where('user_id', '=', $user_id)->get();
+        $plan = Plan::where('id','=', $user->plan_id)->first();
+
+        if ($plan) {
+            $sub_plan = $plan->plan_name;
+        }else{
+            $sub_plan = null;
+        }
+
+       
+        $response[]= array(
+        'user_plan' => $sub_plan,
+        'plan_pickups' => $user->plan_pickups,
+        'plan_status' => $user->plan_status,
+        'success' => '1'
+     );
+     $set['234WM_API_V1']  = $response;
+       
+      
+     
+        $set['234WM_API_V1']  = $row;
+        echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+        die();
+    }
 
     /* store a schedule */
 
@@ -153,8 +206,7 @@ class ApiController extends Controller
     {
 
 
-        $user = $request->user();
-
+        $user = $request->user(); 
         $address = $request->address;
         $state = $request->state;
         $city = $request->city;

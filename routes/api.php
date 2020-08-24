@@ -21,7 +21,7 @@
 Route::group(['prefix'=> 'auth','namespace' => 'API'], function(){
 
         Route::post('signin', 'Auth\LoginController@Login');
-        // Route::get('/login/{email?}/{password?}', 'Auth\LoginController@appLogin');
+        Route::get('forgotpass/{email?}', 'Auth\LoginController@ForgotPass');
 
         Route::post('join', 'Auth\RegisterController@RegisterCustomer');
 
@@ -83,6 +83,8 @@ Route::group(['prefix'=> 'sc_front','namespace' => 'API'], function(){
 
           /* Home APi */
           Route::get('home_feeds', 'ApiController@AppHomeFeed');
+          Route::get('schedules_feeds', 'ApiController@getSchedules');
+          Route::get('check/subscription', 'ApiController@checkSubscription');
           Route::post('schedule/pickup', 'ApiController@StoreSchedule');
           Route::post('schedule/subscription', 'ApiController@StoreSubscriptionSchedule');
 
