@@ -27,13 +27,13 @@ class LoginController extends Controller
            if (! $token = auth()->attempt($credentials)) {
             $email_checker = User::where('email','=',$email)->first();
             if (!$email_checker) {
-                $set['234WM_API_V1']=array('msg' =>'Account not found','success'=>'0');
+                $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
             }
             $hashedPassword = $email_checker->password;
 
 
             if (!Hash::check($password, $hashedPassword)) {
-                $set['234WM_API_V1']=array('msg' =>'wrong password','success'=>'0');
+                $set['234WM_API_V1'][]=array('msg' =>'wrong password','success'=>'0');
             }
             }
             
