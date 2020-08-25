@@ -126,7 +126,7 @@ class ApiController extends Controller
         $plan = Plan::get();
 
        
-        $response[]=$plan;
+        $response=$plan;
      
      $set['234WM_API_V1']  = $response;
         
