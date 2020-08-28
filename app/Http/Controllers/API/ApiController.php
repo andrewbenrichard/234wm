@@ -143,25 +143,29 @@ class ApiController extends Controller
         ]);
       
         $main_plan_id = $plan->id;
-       echo $main_plan_duration = $plan->plan_duration;
+        $main_plan_duration = $plan->plan_duration;
        
         // update the user plan status
 
-   
+       $sub_update =([
+            'plan_status' => 1,
+            'plan_id' => $main_plan_id,
+            'plan_pickups' => $main_plan_duration
+        ]);
 
-    //     $user =    User::where('id', $user_id)->update($sub_update);
+        $user =    User::where('id', $user_id)->update($sub_update);
 
-    //     $response[]= array(
-    //     'user_id' => $user->id,
-    //     'user_plan' => $user->plan_status,
-    //     'success' => '1'
-    //  );
-    //  $set['234WM_API_V1']  = $response;
+        $response[]= array(
+        'user_id' => $user->id,
+        'user_plan' => $user->plan_status,
+        'success' => '1'
+     );
+     $set['234WM_API_V1']  = $response;
        
       
-    //  header( 'Content-Type: application/json; charset=utf-8' );
-    //  echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-    //  die();
+     header( 'Content-Type: application/json; charset=utf-8' );
+     echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+     die();
     }
     /* get plans */
     public function getPlan()
