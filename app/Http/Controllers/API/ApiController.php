@@ -160,9 +160,9 @@ class ApiController extends Controller
 
             if ($address) {
 
-                echo $address = $address->address;
+                 $address = $address->address;
+                echo   $state = $address->state;
             }
-    //             $state = $address->state;
     //             $city = $address->city;
     //             $fullname = $user->full_name;
     //             $email = $user->email;
