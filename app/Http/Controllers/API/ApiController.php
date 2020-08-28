@@ -229,6 +229,41 @@ class ApiController extends Controller
      echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
      die();
     }
+    /* store address for user and activate his plan */
+    public function saveAddressPlan()
+    {
+        $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
+        $address = filter_input(INPUT_GET, 'address', FILTER_SANITIZE_STRING);
+        $state = filter_input(INPUT_GET, 'state', FILTER_SANITIZE_STRING);
+        $city = filter_input(INPUT_GET, 'city', FILTER_SANITIZE_STRING);
+        
+        $user = User::where('id', '=', $user_id)->first();
+        // store payment subscription
+        $store = Address::create([
+            'user_id' => $user_id,
+            'address' =>   $address,
+            'state' =>   $state,
+            'city' =>    $city,
+        ]);
+      
+        
+       $sub_update =([
+        'plan_status' => 2,
+    ]);
+
+        User::where('id', $user_id)->update($sub_update);
+     
+        $response[]= array(
+        'user_id' => $user_id,
+        'success' => '1'
+     );
+     $set['234WM_API_V1']  = $response;
+       
+      
+     header( 'Content-Type: application/json; charset=utf-8' );
+     echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+     die();
+    }
     /* get plans */
     public function getPlan()
     {        

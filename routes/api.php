@@ -87,6 +87,7 @@ Route::group(['prefix'=> 'sc_front','namespace' => 'API'], function(){
           Route::get('check/subscription/{user_id?}', 'ApiController@checkSubscription');
           Route::get('save/subscription/{user_id?}/{plan_id?}/{plan_code?}/{plan_amount?}/{payment_ref?}', 'ApiController@saveSubscription');
           Route::get('save/address/{user_id?}/{address?}/{city?}/{state?}', 'ApiController@saveAddress');
+          Route::get('save/address/plan/{user_id?}/{address?}/{city?}/{state?}', 'ApiController@saveAddressPlan');
           Route::get('get/address/{user_id?}', 'ApiController@getAddress');
           Route::get('get/subscription/feed', 'ApiController@getPlan');
           Route::post('schedule/pickup', 'ApiController@StoreSchedule');
