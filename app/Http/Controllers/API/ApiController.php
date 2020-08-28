@@ -143,15 +143,11 @@ class ApiController extends Controller
         ]);
       
         $main_plan_id = $plan->id;
-        $main_plan_duration = $plan->plan_duration;
+       echo $main_plan_duration = $plan->plan_duration;
        
         // update the user plan status
 
-     echo   $sub_update =([
-            'plan_status' => 1,
-            'plan_id' => $main_plan_id,
-            // 'plan_pickups' => $main_plan_duration
-        ]);
+   
 
     //     $user =    User::where('id', $user_id)->update($sub_update);
 
