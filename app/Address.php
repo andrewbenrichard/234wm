@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'address', 
+        'city',
+        'state',
+    ];
     public $timestamps = false;
     
     
