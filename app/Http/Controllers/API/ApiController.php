@@ -131,25 +131,25 @@ class ApiController extends Controller
         $payment_ref = filter_input(INPUT_GET, 'payment_ref', FILTER_SANITIZE_STRING);
         
         $user = User::where('id', '=', $user_id)->first();
-     echo   $plan = Plan::where('id','=', $plan_id)->first();
+        $plan = Plan::where('id','=', $plan_id)->first();
 
         // store payment subscription
-    //     $store = Subscription::create([
-    //         'user_id' => $user_id,
-    //         'plan_id' =>   $plan_id,
-    //         'plan_code' =>   $plan_code,
-    //         'amount_paid' =>    $plan_amount,
-    //         'payment_ref' => $payment_ref,
-    //     ]);
+        $store = Subscription::create([
+            'user_id' => $user_id,
+            'plan_id' =>   $plan_id,
+            'plan_code' =>   $plan_code,
+            'amount_paid' =>    $plan_amount,
+            'payment_ref' => $payment_ref,
+        ]);
       
        
-    //     // update the user plan status
+        // update the user plan status
 
-    //     $sub_update =[
-    //         'plan_status' => 1,
-    //         'plan_id' => $plan->id,
-    //         'plan_pickups' => $plan->plan_duration,
-    //     ];
+     echo   $sub_update =[
+            'plan_status' => 1,
+            'plan_id' => $plan->id,
+            'plan_pickups' => $plan->plan_duration,
+        ];
 
     //     $user =    User::where('id', $user_id)->update($sub_update);
 
