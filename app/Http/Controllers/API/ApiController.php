@@ -153,10 +153,10 @@ class ApiController extends Controller
             'plan_pickups' => $main_plan_duration
         ]);
 
-        $user =    User::where('id', $user_id)->update($sub_update);
+            User::where('id', $user_id)->update($sub_update);
 
         $response[]= array(
-        'user_id' => $user->id,
+        'user_id' => $user_id,
         'user_plan' => $user->plan_status,
         'success' => '1'
      );
