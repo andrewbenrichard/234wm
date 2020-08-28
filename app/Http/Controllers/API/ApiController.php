@@ -142,13 +142,15 @@ class ApiController extends Controller
             'payment_ref' => $payment_ref,
         ]);
       
+        $main_plan_id = $plan->id;
+        $main_plan_duration = $plan->plan_duration;
        
         // update the user plan status
 
      echo   $sub_update =([
             'plan_status' => 1,
-            'plan_id' => $plan->id,
-            'plan_pickups' => $plan->plan_duration,
+            'plan_id' => $main_plan_id,
+            'plan_pickups' => $main_plan_duration,
         ]);
 
     //     $user =    User::where('id', $user_id)->update($sub_update);
