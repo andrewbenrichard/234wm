@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Plan;
 use App\HeaderSlider;
 use App\Schedule;
+use App\Address;
 use App\User;
 use App\Subscription;
 use Illuminate\Support\Carbon;
@@ -155,9 +156,70 @@ class ApiController extends Controller
 
             User::where('id', $user_id)->update($sub_update);
 
+            $address = Address::where('user_id', '=', $user_id)->first();
+
+            if ($address) {
+
+                $address = $address->address;
+                $state = $address->state;
+                $city = $address->city;
+                $fullname = $user->full_name;
+                $email = $user->email;
+                $number = $user->number;
+                $user_id = $user->id;
+
+                $schedules = $plan->plan_duration;
+                $set_number = 1;
+    
+                $date = new DateTime();
+                while ($set_number <= $schedules) {
+                            $date->modify('next saturday');
+                        $store = Schedule::create([
+                            'user_id' => $user->id,
+                            'address' => $address,
+                            'state' =>   $state,
+                            'city' =>   $city,
+                            'fullname' => $fullname,
+                            'email' =>     $email,
+                            'number' =>    $number,
+                        ]);
+            
+                    $set_number++;
+                }
+            }
         $response[]= array(
         'user_id' => $user_id,
         'user_plan' => $user->plan_status,
+        'to_address' => $address,
+        'success' => '1'
+     );
+     $set['234WM_API_V1']  = $response;
+       
+      
+     header( 'Content-Type: application/json; charset=utf-8' );
+     echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+     die();
+    }
+    /* store address for users */
+    public function saveAddress()
+    {
+        $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
+        $address = filter_input(INPUT_GET, 'address', FILTER_SANITIZE_STRING);
+        $state = filter_input(INPUT_GET, 'state', FILTER_SANITIZE_STRING);
+        $city = filter_input(INPUT_GET, 'city', FILTER_SANITIZE_STRING);
+        
+        $user = User::where('id', '=', $user_id)->first();
+        // store payment subscription
+        $store = Address::create([
+            'user_id' => $user_id,
+            'address' =>   $address,
+            'state' =>   $state,
+            'city' =>    $city,
+        ]);
+      
+     
+        $response[]= array(
+        'user_id' => $user_id,
         'success' => '1'
      );
      $set['234WM_API_V1']  = $response;
@@ -182,6 +244,23 @@ class ApiController extends Controller
      echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
      die();
     }
+    /* get address */
+    public function getAddress()
+    {        
+        $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
+
+        $address = Address::where('user_id', '=', $user_id);
+
+       
+        $response['address']=$address;
+     
+     $set['234WM_API_V1']  = $response;
+        
+      
+     header( 'Content-Type: application/json; charset=utf-8' );
+     echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+     die();
+    }
 
     /* store a schedule */
 
@@ -197,7 +276,7 @@ class ApiController extends Controller
         $fullname = $user->full_name;
         $email = $user->email;
         $number = $user->number;
-        $user_id = $user->user_id;
+        $user_id = $user->id;
 
         if ($user->plan_status == 0) {
             $set['234WM_API_V1'][]=array('msg' =>'Please subscribe to a plan','success'=>'0');
