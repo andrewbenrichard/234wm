@@ -157,54 +157,53 @@ class ApiController extends Controller
             User::where('id', $user_id)->update($sub_update);
              $address = Address::where('user_id', $user_id)->first();
 
-             dd($address->city);
+            //  dd($address->city);
 
         //  echo  DB::table('addresses')
         //             ->where('user_id',  '=' ,  $user_id )
         //             ->first(); 
 
-            // if ($address->city) {
+            if ($address->city) {
 
-            //      $address = $address->address;
-            //     echo   $state = $address->city;
-            // }
-    //             $city = $address->city;
-    //             $fullname = $user->full_name;
-    //             $email = $user->email;
-    //             $number = $user->number;
-    //             $user_id = $user->id;
+                 $address = $address->address;
+                   $state = $address->state;
+                $city = $address->city;
+                $fullname = $user->full_name;
+                $email = $user->email;
+                $number = $user->number;
+                $user_id = $user->id;
 
-    //             $schedules = $plan->plan_duration;
-    //             $set_number = 1;
+                $schedules = $plan->plan_duration;
+                $set_number = 1;
     
-    //             $date = new DateTime();
-    //             while ($set_number <= $schedules) {
-    //                         $date->modify('next saturday');
-    //                     $store = Schedule::create([
-    //                         'user_id' => $user->id,
-    //                         'address' => $address,
-    //                         'state' =>   $state,
-    //                         'city' =>   $city,
-    //                         'fullname' => $fullname,
-    //                         'email' =>     $email,
-    //                         'number' =>    $number,
-    //                     ]);
+                $date = new DateTime();
+                while ($set_number <= $schedules) {
+                            $date->modify('next saturday');
+                        $store = Schedule::create([
+                            'user_id' => $user->id,
+                            'address' => $address,
+                            'state' =>   $state,
+                            'city' =>   $city,
+                            'fullname' => $fullname,
+                            'email' =>     $email,
+                            'number' =>    $number,
+                        ]);
             
-    //                 $set_number++;
-    //             }
-    //         }
-    //     $response[]= array(
-    //     'user_id' => $user_id,
-    //     'user_plan' => $user->plan_status,
-    //     'to_address' => $address,
-    //     'success' => '1'
-    //  );
-    //  $set['234WM_API_V1']  = $response;
+                    $set_number++;
+                }
+            }
+        $response[]= array(
+        'user_id' => $user_id,
+        'user_plan' => $user->plan_status,
+        'to_address' => $address,
+        'success' => '1'
+     );
+     $set['234WM_API_V1']  = $response;
        
       
-    //  header( 'Content-Type: application/json; charset=utf-8' );
-    //  echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-    //  die();
+     header( 'Content-Type: application/json; charset=utf-8' );
+     echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+     die();
     }
     /* store address for users */
     public function saveAddress()
