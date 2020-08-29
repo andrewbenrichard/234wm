@@ -165,7 +165,6 @@ class ApiController extends Controller
 
             if ($address) {
 
-                $sch_state = $address->state;
                  $sch_address = $address->address;
                 $sch_city = $address->city;
                 $fullname = $user->full_name;
@@ -182,7 +181,6 @@ class ApiController extends Controller
                         $store = Schedule::create([
                             'user_id' => $user->id,
                             'address' => $sch_address,
-                            'state' =>   $sch_state,
                             'city' =>   $sch_city,
                             'fullname' => $fullname,
                             'email' =>     $email,
