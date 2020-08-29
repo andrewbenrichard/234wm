@@ -181,9 +181,9 @@ class ApiController extends Controller
                             $date->modify('next saturday');
                         $store = Schedule::create([
                             'user_id' => $user->id,
-                            'address' => $address,
-                            'state' =>   $state,
-                            'city' =>   $city,
+                            'address' => $sch_address,
+                            'state' =>   $sch_state,
+                            'city' =>   $sch_city,
                             'fullname' => $fullname,
                             'email' =>     $email,
                             'number' =>    $number,
