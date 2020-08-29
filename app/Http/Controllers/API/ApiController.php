@@ -175,6 +175,7 @@ class ApiController extends Controller
                 $schedules = $plan->plan_duration;
                 $set_number = 1;
     
+
                 $date = new DateTime();
                 while ($set_number <= $schedules) {
                             $date->modify('next saturday');
@@ -183,19 +184,27 @@ class ApiController extends Controller
                             'address' => $sch_address,
                             'city' =>   $sch_city,
                             'fullname' => $fullname,
+                            'date' =>    $date->format('Y-m-d'),
                             'email' =>     $email,
                             'number' =>    $number,
                         ]);
             
                     $set_number++;
                 }
+                $response[]= array(
+                'user_id' => $user_id,
+                'user_plan' => $user->plan_status,
+                'to_address' => 0,
+                'success' => '1'
+             );
+            }else{
+                $response[]= array(
+                    'user_id' => $user_id,
+                    'user_plan' => $user->plan_status,
+                    'to_address' => 1,
+                    'success' => '1'
+                 );
             }
-        $response[]= array(
-        'user_id' => $user_id,
-        'user_plan' => $user->plan_status,
-        'to_address' => $address,
-        'success' => '1'
-     );
      $set['234WM_API_V1']  = $response;
        
       
