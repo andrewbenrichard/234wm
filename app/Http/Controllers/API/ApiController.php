@@ -155,7 +155,9 @@ class ApiController extends Controller
         ]);
 
             User::where('id', $user_id)->update($sub_update);
-         echo    $address = Address::where('user_id', $user_id)->first();
+             $address = Address::where('user_id', $user_id)->first();
+
+             dd($address->city);
 
         //  echo  DB::table('addresses')
         //             ->where('user_id',  '=' ,  $user_id )
