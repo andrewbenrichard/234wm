@@ -151,7 +151,7 @@ class ApiController extends Controller
        $sub_update =([
             'plan_status' => 1,
             'plan_id' => $main_plan_id,
-            'plan_pickups' => $main_plan_duration,
+            'plan_pickups' => $main_plan_duration
         ]);
 
             User::where('id', $user_id)->update($sub_update);
@@ -163,11 +163,11 @@ class ApiController extends Controller
         //             ->where('user_id',  '=' ,  $user_id )
         //             ->first(); 
 
-            if ($address->city) {
+            if ($address) {
 
-                $state = $address->state;
-                 $address = $address->address;
-                $city = $address->city;
+                $sch_state = $address->state;
+                 $sch_address = $address->address;
+                $sch_city = $address->city;
                 $fullname = $user->full_name;
                 $email = $user->email;
                 $number = $user->number;
