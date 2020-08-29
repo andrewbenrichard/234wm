@@ -158,7 +158,7 @@ class ApiController extends Controller
 
             $address = Address::where('user_id', '=', $user_id)->first();
 
-            if ($address) {
+            if (!$address->city) {
 
                  $address = $address->address;
                 echo   $state = $address->city;
