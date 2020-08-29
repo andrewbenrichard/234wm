@@ -160,7 +160,7 @@ class ApiController extends Controller
                     ->where('user_id',  '=' ,  $user_id )
                     ->first(); 
 
-            if (!$address->city) {
+            if ($address->city) {
 
                  $address = $address->address;
                 echo   $state = $address->city;
