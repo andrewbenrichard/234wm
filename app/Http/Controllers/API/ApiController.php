@@ -165,8 +165,8 @@ class ApiController extends Controller
 
             if ($address->city) {
 
+                $state = $address->state;
                  $address = $address->address;
-                   $state = $address->state;
                 $city = $address->city;
                 $fullname = $user->full_name;
                 $email = $user->email;
