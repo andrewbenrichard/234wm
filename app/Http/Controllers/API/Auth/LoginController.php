@@ -178,5 +178,26 @@ class LoginController extends Controller
     die();
    
    }
+   public function postForgotPass(Request $request)
+   {
+
+    
+    $email =  $request->email;
+
+    $email_checker = User::where('email','=',$email)->first();
+    if (!$email_checker) {
+        $set['234WM_API_V1'][]=array('msg' =>'Account not found','success'=>'0');
+    }else{
+        // TODO@:: SEND FORGOT PASSWORD EMAIL LINK TO RESET PASSWORD
+
+
+        $set['234WM_API_V1'][]=array('msg' =>"we've sent you a reset link to reset your password",'success'=>'1');
+
+    }
+    header( 'Content-Type: application/json; charset=utf-8' );
+    echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    die();
+   
+   }
 
 }

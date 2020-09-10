@@ -19,11 +19,14 @@
 
 
 Route::group(['prefix'=> 'auth','namespace' => 'API'], function(){
-
-        Route::post('ios/signin', 'Auth\LoginController@Postlogin');
+        Route::group(['prefix' => 'ios'], function(){
+                Route::post('signin', 'Auth\LoginController@Postlogin');
+                Route::post('forgotpass', 'Auth\LoginController@postForgotPass');
+                Route::post('join', 'Auth\RegisterController@RegisterCustomer');
+        });
+        
         Route::get('forgotpass/{email?}', 'Auth\LoginController@ForgotPass');
 
-        Route::post('join', 'Auth\RegisterController@RegisterCustomer');
 
         Route::get('signin/{email?}/{password?}', 'Auth\LoginController@Login');
         Route::get('join/{full_name?}/{email?}/{password?}/{number?}', 'Auth\RegisterController@RegisterCustomer');
