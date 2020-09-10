@@ -20,7 +20,7 @@
 
 Route::group(['prefix'=> 'auth','namespace' => 'API'], function(){
 
-        Route::post('signin', 'Auth\LoginController@Login');
+        Route::post('signin', 'Auth\LoginController@Postlogin');
         Route::get('forgotpass/{email?}', 'Auth\LoginController@ForgotPass');
 
         Route::post('join', 'Auth\RegisterController@RegisterCustomer');
