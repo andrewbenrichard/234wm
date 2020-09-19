@@ -22,7 +22,7 @@ Route::group(['prefix'=> 'auth','namespace' => 'API'], function(){
         Route::group(['prefix' => 'ios'], function(){
                 Route::post('signin', 'Auth\LoginController@Postlogin');
                 Route::post('forgotpass', 'Auth\LoginController@postForgotPass');
-                Route::post('join', 'Auth\RegisterController@RegisterCustomer');
+                Route::post('join', 'Auth\RegisterController@postRegisterCustomer');
         });
         
         Route::get('forgotpass/{email?}', 'Auth\LoginController@ForgotPass');
