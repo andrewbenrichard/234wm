@@ -16,10 +16,10 @@
 
 
     <!-- Main Style CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/front//css/style.css">
 
-<link rel="shortcut icon" href="images/234wm.png" type="image/x-icon">
-<link rel="icon" href="images/234wm.png" type="image/x-icon">
+<link rel="shortcut icon" href="/public/front/images/234wm.png" type="image/x-icon">
+<link rel="icon" href="/public/front/images/234wm.png" type="image/x-icon">
 
 </head>
 <body>

@@ -13,7 +13,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-7">
                     <div class="image">
-                        <img class="img-fluid" src="/images/banners/recycle_home.gif" alt="">
+                        <img class="img-fluid" src="/public/front/images/banners/recycle_home.gif" alt="">
                     </div>
                 </div>
 

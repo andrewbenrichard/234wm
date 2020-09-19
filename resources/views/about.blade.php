@@ -122,7 +122,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="contact-form-wrap">
-                    <form id="contact-form" action="https://hasthemes.com/file/mail.php" method="post">
+                    <form id="contact-form" action="#" method="post">
                         <div class="contact-form__two">
                             <div class="contact-input">
                                 <div class="contact-inner">

@@ -81,7 +81,7 @@
                                 <div class="ht-box-icon style-02 single-svg-icon-box">
                                     <div class="icon-box-wrap">
                                         <div class="icon">
-                                            <div class="svg-icon" id="svg-2" data-svg-icon="/images/svg/linea-basic-case.svg"></div>
+                                            <div class="svg-icon" id="svg-2" data-svg-icon="/public/front/images/svg/linea-basic-case.svg"></div>
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">Commercial Waste Management</h5>
@@ -99,7 +99,7 @@
                                     <!-- ht-box-icon Start -->
                                     <div class="icon-box-wrap">
                                         <div class="icon">
-                                            <div class="svg-icon" id="svg-3" data-svg-icon="/images/svg/linea-basic-alarm.svg"></div>
+                                            <div class="svg-icon" id="svg-3" data-svg-icon="/public/front/images/svg/linea-basic-alarm.svg"></div>
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">Waste Pickup Schedule</h5>
@@ -118,7 +118,7 @@
                                     <!-- ht-box-icon Start -->
                                     <div class="icon-box-wrap">
                                         <div class="icon">
-                                            <div class="svg-icon" id="svg-4" data-svg-icon="/images/svg/linea-basic-geolocalize-05.svg"></div>
+                                            <div class="svg-icon" id="svg-4" data-svg-icon="/public/front/images/svg/linea-basic-geolocalize-05.svg"></div>
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">Residential Waste Management</h5>
@@ -138,8 +138,8 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="feature-list-button-box mt-30 text-center">
-                        <a href="#" class="image_btn"><img class="img-fluid" src="/images/icons/aeroland-button-google-play.jpg" alt=""></a>
-                        <a href="#" class="image_btn"><img class="img-fluid" src="/images/icons/aeroland-button-app-store.jpg" alt=""></a>
+                        <a href="#" class="image_btn"><img class="img-fluid" src="/public/front/images/icons/aeroland-button-google-play.jpg" alt=""></a>
+                        <a href="#" class="image_btn"><img class="img-fluid" src="/public/front/images/icons/aeroland-button-app-store.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -185,7 +185,7 @@
 
                                             <div class="testimonial-slider--info">
                                                 <div class="testimonial-slider__media">
-                                                    <img src="/images/testimonial/member1.png" class="img-fluid" alt="">
+                                                    <img src="/public/front/images/testimonial/member1.png" class="img-fluid" alt="">
                                                 </div>
 
                                                 <div class="testimonial-slider__author">
@@ -211,7 +211,7 @@
 
                                             <div class="testimonial-slider--info">
                                                 <div class="testimonial-slider__media">
-                                                    <img src="/images/testimonial/member2.png" class="img-fluid" alt="">
+                                                    <img src="/public/front/images/testimonial/member2.png" class="img-fluid" alt="">
                                                 </div>
 
                                                 <div class="testimonial-slider__author">
@@ -237,7 +237,7 @@
 
                                             <div class="testimonial-slider--info">
                                                 <div class="testimonial-slider__media">
-                                                    <img src="/images/testimonial/member3.png" class="img-fluid" alt="">
+                                                    <img src="/public/front/images/testimonial/member3.png" class="img-fluid" alt="">
                                                 </div>
 
                                                 <div class="testimonial-slider__author">
@@ -314,7 +314,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="contact-form-wrap">
-                            <form id="contact-form" action="https://hasthemes.com/file/mail.php" method="post">
+                            <form id="contact-form" action="#" method="post">
                                 <div class="contact-form__two">
                                     <div class="contact-input">
                                         <div class="contact-inner">

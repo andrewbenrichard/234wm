@@ -47,7 +47,7 @@
                                 <div class="ht-box-images style-01">
                                     <div class="image-box-wrap">
                                         <div class="box-image">
-                                            <img class="img-fulid" src="/images/svg/linea-basic-case.svg" alt="">
+                                            <img class="img-fulid" src="/public/front/images/svg/linea-basic-case.svg" alt="">
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">Commercial Waste Management </h5>
@@ -71,7 +71,7 @@
                                 <div class="ht-box-images style-01">
                                     <div class="image-box-wrap">
                                         <div class="box-image">
-                                            <img class="img-fulid" src="/images/svg/linea-basic-alarm.svg" alt="">
+                                            <img class="img-fulid" src="/public/front/images/svg/linea-basic-alarm.svg" alt="">
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">Waste Pickup Schedule</h5>
@@ -95,7 +95,7 @@
                                 <div class="ht-box-images style-01">
                                     <div class="image-box-wrap">
                                         <div class="box-image">
-                                            <img class="img-fulid" src="/images/svg/linea-basic-geolocalize-05.svg" alt="">
+                                            <img class="img-fulid" src="/public/front/images/svg/linea-basic-geolocalize-05.svg" alt="">
                                         </div>
                                         <div class="content">
                                             <h5 class="heading">Residential Waste Management</h5>

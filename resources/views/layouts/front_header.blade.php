@@ -18,7 +18,7 @@
                     <!-- brand logo -->
                     <div class="header__logo top-logo">
                         <a href="index.html">
-                            <img src="/images/logo/234wm.png" class="img-fluid" alt="">
+                            <img src="/public/front/images/logo/234wm.png" class="img-fluid" alt="">
                         </a>
                     </div>
 
