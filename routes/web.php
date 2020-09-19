@@ -11,11 +11,11 @@
 |
 */
 
-// Route::get('/{path}', 'MainController@index')->name('home')->where('path', '.*');
+Route::get('/', 'MainController@index')->name('home');
+Route::get('/services', 'MainController@services')->name('services');
+Route::get('/about-us', 'MainController@about')->name('about');
+Route::get('/locations', 'MainController@locations')->name('locations');
+Route::get('/quote', 'MainController@quote')->name('quote');
+Route::get('/contact-us', 'MainController@contact')->name('contact');
 
-// Auth::routes();
 
-// Route::get('{path}', 'MainController@index')->where('path', '([A-z\d\-\/_.]+)?');
-// Route::get('/dashboard/{path}', 'MainController@dashboard')->name('dashboard')->where('path', '.*');
-/* used to handle vue routes */
-// Route::get('/{path}', 'HomeController@index')->where('path', '([A-z\d\-\/_.]+)?');
