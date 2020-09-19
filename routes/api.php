@@ -85,8 +85,8 @@ Route::group(['prefix'=> 'sc_front','namespace' => 'API'], function(){
       Route::group(['prefix' => 'api_v1'], function(){
 
           /* Home APi */
-          Route::get('home_feeds', 'ApiController@AppHomeFeed');
-          Route::get('schedules_feeds', 'ApiController@getSchedules');
+          Route::get('home_feeds/{user_id?}', 'ApiController@AppHomeFeed');
+          Route::get('schedules_feeds/{user_id?}', 'ApiController@getSchedules');
           Route::get('check/subscription/{user_id?}', 'ApiController@checkSubscription');
           Route::get('save/subscription/{user_id?}/{plan_id?}/{plan_code?}/{plan_amount?}/{payment_ref?}', 'ApiController@saveSubscription');
           Route::get('save/address/{user_id?}/{address?}/{city?}/{state?}', 'ApiController@saveAddress');

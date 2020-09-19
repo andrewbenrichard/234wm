@@ -38,7 +38,8 @@ class ApiController extends Controller
     public function AppHomeFeed()
     {
 
-       $user_id = 2;
+         $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
+
         /* media url header ends here */
 
         $slides = HeaderSlider::get();
@@ -73,7 +74,7 @@ class ApiController extends Controller
     public function getSchedules()
     {
 
-       $user_id = 2;
+        $user_id = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_STRING);
         /* media url header ends here */
         
         $schedules = Schedule::where('user_id', '=', $user_id)->get();
