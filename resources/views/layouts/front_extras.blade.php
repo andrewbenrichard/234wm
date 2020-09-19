@@ -102,7 +102,7 @@
                         <div class="col-md-6 col-8">
                             <!-- logo -->
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="/public/front/images/logo/logo-dark.png" class="img-fluid" alt="">
                                 </a>
                             </div>

@@ -17,7 +17,7 @@
                 <div class="header position-relative">
                     <!-- brand logo -->
                     <div class="header__logo top-logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img src="/public/front/images/logo/234wm.png" class="img-fluid" alt="">
                         </a>
                     </div>
